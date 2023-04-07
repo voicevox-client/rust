@@ -1,1 +1,1 @@
-mod audio_query;
+pub mod audio_query;

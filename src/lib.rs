@@ -1,8 +1,9 @@
+mod audio_query;
+mod client;
+mod restapi;
 mod types;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub use client::Client;
 
 #[cfg(test)]
 mod tests {
@@ -10,7 +11,12 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        let client = Client::new("http://localhost:50021");
+        let audio_query = client.create_audio_query("こんにちは", 1)
+            .await
+            .unwrap();
+        audio_query.synthesis(1)
+            .await
+            .unwrap();
     }
 }
