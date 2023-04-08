@@ -24,8 +24,8 @@ impl RestAPI {
     }
 
     pub async fn create_audio_query(
-        &self, speaker: i32,
-        text: &str,
+        &self,
+        text: &str, speaker: &str,
         core_version: Option<&str>,
     ) -> Result<AudioQueryType> {
         let mut params = vec![("text", text), ("speaker", speaker)];
