@@ -1,4 +1,4 @@
-# Rust
+# voicevox-client
 This wrapper is for voicevox-engine that can easy to use.
 
 ## Example
