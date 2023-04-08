@@ -12,7 +12,6 @@ license = "MIT"
 bytes = "1.4.0"
 reqwest = { version = "0.11.16", default-features = false, features = ["json", "rustls"] }
 serde = { version = "1.0.159", features = ["derive"] }
-serde_json = "1.0.95"
 
 [dev-dependencies]
 tokio = { version = "1.27.0", features = ["full"] }
