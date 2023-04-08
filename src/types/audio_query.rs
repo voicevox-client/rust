@@ -4,9 +4,9 @@ use serde::{Deserialize, Serialize};
 pub struct Mora {
     text: String,
     #[serde(default)]
-    consonant: String,
+    consonant: Option<String>,
     #[serde(default)]
-    consonant_length: f32,
+    consonant_length: Option<f32>,
     vowel: String,
     vowel_length: f32,
     pitch: f32,
@@ -14,13 +14,11 @@ pub struct Mora {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AccentPhrase {
-    // moras: Vec<Mora>,
+    moras: Vec<Mora>,
     accent: i32,
     // pause_mora: Mora,
-    /*
     #[serde(default)]
     is_interrogative: bool,
-    */
 }
 
 #[derive(Serialize, Deserialize, Debug)]

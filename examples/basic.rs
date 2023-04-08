@@ -1,4 +1,5 @@
 use voicevox_client::Client;
+use std::{io::Write, fs::File};
 
 #[tokio::main]
 async fn main() {
@@ -8,5 +9,6 @@ async fn main() {
         .await
         .unwrap();
     let audio = audio_query.synthesis(1).await.unwrap();
-    println!("audio: {:?}", audio);
+    let mut file = File::create("examples/hello.wav").unwrap();
+    file.write_all(&audio).unwrap();
 }
