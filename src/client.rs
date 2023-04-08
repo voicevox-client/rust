@@ -1,5 +1,5 @@
 use crate::{audio_query::AudioQuery, restapi::RestAPI, types::audio_query::AudioQueryType};
-use reqwest::{Result, header::HeaderMap};
+use reqwest::{header::HeaderMap, Result};
 
 pub struct Client {
     restapi: RestAPI,
