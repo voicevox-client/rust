@@ -14,10 +14,14 @@ impl Client {
 
     pub async fn create_audio_query(
         &self,
-        text: &str, speaker: i32,
+        text: &str,
+        speaker: i32,
         core_version: Option<&str>,
     ) -> Result<AudioQuery> {
-        let data: AudioQueryType = self.restapi.create_audio_query(text, speaker, core_version).await?;
+        let data: AudioQueryType = self
+            .restapi
+            .create_audio_query(text, speaker.to_string().as_str(), core_version)
+            .await?;
         let audio_query = AudioQuery::new(self.restapi.clone(), data);
         Ok(audio_query)
     }

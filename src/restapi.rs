@@ -25,7 +25,8 @@ impl RestAPI {
 
     pub async fn create_audio_query(
         &self,
-        text: &str, speaker: &str,
+        text: &str,
+        speaker: &str,
         core_version: Option<&str>,
     ) -> Result<AudioQueryType> {
         let mut params = vec![("text", text), ("speaker", speaker)];
@@ -42,7 +43,7 @@ impl RestAPI {
         Ok(data)
     }
 
-    pub async fn synthesis(&self, audio_query: &AudioQueryType, speaker: i32) -> Result<Bytes> {
+    pub async fn synthesis(&self, audio_query: &AudioQueryType, speaker: &str) -> Result<Bytes> {
         let data = self
             .request("POST", "/synthesis")
             .json(audio_query)

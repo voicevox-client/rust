@@ -16,7 +16,10 @@ impl AudioQuery {
     }
 
     pub async fn synthesis(&self, speaker: i32) -> Result<Bytes> {
-        let data = self.restapi.synthesis(&self.audio_query, speaker.to_string().as_str()).await?;
+        let data = self
+            .restapi
+            .synthesis(&self.audio_query, speaker.to_string().as_str())
+            .await?;
         Ok(data)
     }
 }
