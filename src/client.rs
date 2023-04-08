@@ -1,14 +1,14 @@
 use crate::{audio_query::AudioQuery, restapi::RestAPI, types::audio_query::AudioQueryType};
-use reqwest::Result;
+use reqwest::{Result, header::HeaderMap};
 
 pub struct Client {
     restapi: RestAPI,
 }
 
 impl Client {
-    pub fn new(base_path: String) -> Self {
+    pub fn new(base_path: String, headers: Option<HeaderMap>) -> Self {
         Self {
-            restapi: RestAPI::new(base_path),
+            restapi: RestAPI::new(base_path, headers),
         }
     }
 

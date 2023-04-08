@@ -1,6 +1,6 @@
 use crate::types::audio_query::AudioQueryType;
 use bytes::Bytes;
-use reqwest::{Client, RequestBuilder, Result};
+use reqwest::{Client, RequestBuilder, Result, header::HeaderMap};
 
 #[derive(Clone)]
 pub struct RestAPI {
@@ -9,10 +9,15 @@ pub struct RestAPI {
 }
 
 impl RestAPI {
-    pub fn new(base_path: String) -> Self {
+    pub fn new(base_path: String, headers: Option<HeaderMap>) -> Self {
+        let mut client_builder = Client::builder();
+        if let Some(headers) = headers {
+            client_builder = client_builder.default_headers(headers);
+        }
+        let client = client_builder.build().unwrap();
         Self {
             base_path,
-            client: Client::new(),
+            client,
         }
     }
 

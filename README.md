@@ -9,7 +9,7 @@ use std::{io::Write, fs::File};
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let client = Client::new("http://localhost:50021".to_string());
+    let client = Client::new("http://localhost:50021".to_string(), None);
     let audio_query = client
         .create_audio_query("こんにちは", 1, None)
         .await?;
