@@ -3,6 +3,9 @@ name = "voicevox-client"
 description = "Unofficial voicevox engine wrapper"
 version = "0.1.0"
 edition = "2021"
+repository = "https://github.com/voicevox-client/rust"
+license = "MIT"
+license-file = "LICENSE"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
