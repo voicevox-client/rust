@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct Mora {
     text: String,
     #[serde(default)]
@@ -16,9 +16,10 @@ pub struct Mora {
 pub struct AccentPhrase {
     moras: Vec<Mora>,
     accent: i32,
-    // pause_mora: Mora,
     #[serde(default)]
-    is_interrogative: bool,
+    pause_mora: Option<Mora>,
+    #[serde(default)]
+    is_interrogative: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
