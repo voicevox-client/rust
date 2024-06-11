@@ -37,6 +37,10 @@ pub struct AudioQueryType {
     pre_phoneme_length: f32,
     #[serde(rename = "postPhonemeLength")]
     post_phoneme_length: f32,
+    #[serde(rename = "pauseLength")]
+    pause_length: Option<f32>,
+    #[serde(rename = "pauseLengthScale")]
+    pause_length_scale: f32,
     #[serde(rename = "outputSamplingRate")]
     output_sampling_rate: i32,
     #[serde(rename = "outputStereo")]

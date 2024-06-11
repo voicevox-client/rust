@@ -15,10 +15,18 @@ impl AudioQuery {
         }
     }
 
-    pub async fn synthesis(&self, speaker: i32) -> Result<Bytes> {
+    pub async fn synthesis(
+        &self,
+        speaker: i32,
+        enable_interrogative_upspeak: bool,
+    ) -> Result<Bytes> {
         let data = self
             .restapi
-            .synthesis(&self.audio_query, speaker.to_string().as_str())
+            .synthesis(
+                &self.audio_query,
+                speaker.to_string().as_str(),
+                enable_interrogative_upspeak,
+            )
             .await?;
         Ok(data)
     }
