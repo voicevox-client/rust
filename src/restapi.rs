@@ -45,11 +45,17 @@ impl RestAPI {
         Ok(data)
     }
 
-    pub async fn synthesis(&self, audio_query: &AudioQueryType, speaker: &str) -> Result<Bytes> {
+    pub async fn synthesis(
+        &self,
+        audio_query: &AudioQueryType,
+        speaker: &str,
+        enable_interrogative_upspeak: bool,
+    ) -> Result<Bytes> {
         let data = self
             .request("POST", "/synthesis")
             .json(audio_query)
             .query(&[("speaker", speaker)])
+            .query(&[("enable_interrogative_upspeak", enable_interrogative_upspeak)])
             .send()
             .await?
             .bytes()
